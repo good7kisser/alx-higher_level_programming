@@ -1,26 +1,36 @@
+#include <stddef.h>
 #include "lists.h"
+
 int is_palindrome(listint_t **head)
 {
-	listint_t *current = *head, *palin = *head;
-	int counter = 0, i = 0, j = 0;
+    listint_t *slwpoint = *head;
+    listint_t *fstpoint = *head;
+    listint_t *revlist = NULL;
+    listint_t *tem;
 
-	if (!*head)
-		return (1);
+    if (*head == NULL || (*head)->next == NULL)
+        return (1);
 
-	while (current)
-	{
-		current = current->next;
-		counter++;
-	}
-	current = *head;
-	for (i = 1; i <= counter; i++)
-	{
-		for (j = i; j <= counter - i; j++)
-			palin = palin->next;
-		if (current->n != palin->n)
-			return (0);
-		current = current->next;
-		palin = current;
-	}
-	return (1);
+    while (fstpoint != NULL && fstpoint->next != NULL)
+    {
+        fstpoint = fstpoint->next->next;
+
+        tem = slwpoint->next;
+        slwpoint->next = revlist;
+        revlist = slwpoint;
+        slwpoint = tem;
+    }
+
+    if (fstpoint != NULL)
+        slwpoint = slwpoint->next;
+
+    while (revlist != NULL && slwpoint != NULL)
+    {
+        if (revlist->n != slwpoint->n)
+            return 0;
+        revlist = revlist->next;
+        slwpoint = slwpoint->next;
+    }
+
+    return (1);
 }
