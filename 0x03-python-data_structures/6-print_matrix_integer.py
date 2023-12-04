@@ -2,9 +2,9 @@
 def print_matrix_integer(matrix=[[]]):
     if not matrix:
         return None
-    for submatrix in matrix:
-        if len(submatrix) == 0:
+    for i in matrix:
+        if len(i) == 0:
             print()
-        for i in range(len(submatrix)):
-            print("{:d}".format(submatrix[i]),
+        for z in range(len(i)):
+            print("{:d}".format(i[z]),
                     end="\n" if i is len(submatrix) - 1 else " ")
