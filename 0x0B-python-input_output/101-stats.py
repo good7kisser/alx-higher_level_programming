@@ -16,7 +16,7 @@ status_codes = {
         '500': 0
         }
 
-total_size = i ²= 0
+total_size = i = 0
 
 
 def printer():
