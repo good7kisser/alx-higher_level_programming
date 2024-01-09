@@ -4,6 +4,7 @@
 
 from sys import stdin
 
+
 status_codes = {
         '200': 0,
         '301': 0,
@@ -24,6 +25,7 @@ def printer():
     for key, value in sorted(statu_codes.items()):
         if value > 0:
             print('{:s}: {:d}'.format(key, value))
+
 
 
 try:
